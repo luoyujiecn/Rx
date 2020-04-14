@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "com.kxj.rx"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //support
+    //noinspection GradleCompatible
+    api 'com.android.support:support-v4:28.0.3'
+    //noinspection GradleCompatible
+    api 'com.android.support:appcompat-v7:28.0.3'
+    //noinspection GradleCompatible
+    api 'com.android.support:design:28.0.3'
+
+
+    //netWork
+    api 'com.squareup.okio:okio:1.13.0'
+    api 'com.squareup.okhttp3:okhttp:3.8.1'
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
+    //api 'com.squareup.retrofit2:converter-gson:' + libs.retrofit
+    //api 'com.squareup.retrofit2:converter-scalars:' + libs.retrofit
+    api 'com.google.code.gson:gson:2.8.2'
+
+    //rx
+    api 'io.reactivex:rxandroid:1.2.1'
+    api 'io.reactivex:rxjava:1.3.0'
+    api 'com.jakewharton.rxrelay:rxrelay:1.2.0'
+    api('com.zchu:rxcache:1.2.6') {
+        exclude group: 'com.android.support'
+    }
+
+
+    //log
+    debugImplementation 'com.zchu:zlog:1.0.1'
+    testImplementation 'com.zchu:zlog:1.0.1'
+    releaseImplementation 'com.zchu:zlog-no-op:1.0.1'//正式发布时会将所有的打印方法替换为空方法
+
+
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+
+    api 'com.github.bumptech.glide:glide:4.8.0'
+}
